@@ -1,7 +1,7 @@
-import "./nav.css";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Navbar = () => {
   return (
     <header className="top-nav">
       <nav className="brand-nav navigation gap-1 box-shadow">
@@ -37,4 +37,4 @@ const Nav = () => {
   );
 };
 
-export { Nav };
+export { Navbar };
