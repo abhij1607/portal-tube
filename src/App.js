@@ -1,11 +1,13 @@
-// import "./App.css";
 import "./styles/index.css";
-import { Nav } from "./components/Navbar/nav";
+import { Route, Routes } from "react-router-dom";
+import { AppLayout } from "./components/AppLayout/AppLayout";
 function App() {
   return (
-    <div className="App">
-      <Nav />
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />} />
+      </Routes>
+    </>
   );
 }
 

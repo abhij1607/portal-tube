@@ -1,6 +1,6 @@
 .wrapper {
-  display: flex;
-  min-height: 100vh;
+  display: grid;
+  grid-template-columns: min-content 1fr;
 }
 .main {
   flex-grow: 1;
