@@ -1,7 +1,6 @@
 .sidebar-container {
   border-right: 1px solid var(--primary-color);
   width: 12vw;
-  height: 95vh;
   z-index: 2;
   position: sticky;
   top: 0;
