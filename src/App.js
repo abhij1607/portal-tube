@@ -1,6 +1,18 @@
-import "./App.css";
+import "./styles/index.css";
+import { Route, Routes } from "react-router-dom";
+import { AppLayout } from "./components/AppLayout/AppLayout";
+import { Home } from "./pages/Home/Home";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </>
+  );
 }
 
 export default App;
