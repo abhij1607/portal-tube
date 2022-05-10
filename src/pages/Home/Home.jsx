@@ -1,19 +1,11 @@
 import "./Home.css";
-import { VideoCard } from "./VideoCard/VideoCard";
-import { CategoriesPane } from "./CategoriesPane/CategoriesPane";
+import { CategoriesPane, VideosPane } from "./HomeComponents";
 
 const Home = () => {
   return (
     <main>
       <CategoriesPane />
-      <div className="cards-layout">
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-      </div>
+      <VideosPane />
     </main>
   );
 };

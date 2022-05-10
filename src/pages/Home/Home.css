@@ -1,6 +1,3 @@
-.card-container {
-  max-width: 28rem;
-}
 .cards-layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
