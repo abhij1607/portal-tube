@@ -1,5 +1,8 @@
 import "./login.css";
 import { useState } from "react";
+import { requestLogin } from "../../utils/server-request";
+import { useAuth } from "../../context/auth-context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const testCredentials = {
   email: "adarshbalika@gmail.com",
@@ -10,9 +13,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { userDispatch } = useAuth();
+
+  const navigate = useNavigate();
+  let location = useLocation();
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    //perform login
+    requestLogin(
+      userDispatch,
+      {
+        email: email,
+        password: password,
+      },
+      navigate,
+      location
+    );
   };
 
   return (

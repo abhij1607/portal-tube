@@ -1,7 +1,9 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 
 const Navbar = () => {
+  const { userState, userDispatch } = useAuth();
   return (
     <header className="top-nav">
       <nav className="brand-nav navigation gap-1 box-shadow">
@@ -9,12 +11,21 @@ const Navbar = () => {
           <Link className="logo-brand" to="/">
             PortalTube
           </Link>
-          <Link
-            className="btn btn-primary-outline align-right mobile-element"
-            to="#"
-          >
-            Login
-          </Link>
+          {userState.userToken ? (
+            <button
+              className="btn btn-primary-outline align-right mobile-element"
+              onClick={() => userDispatch({ type: "LOG_OUT" })}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              className="btn btn-primary-outline align-right mobile-element"
+              to="/login"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         <div className="flex-row wd-full search-div">
@@ -29,9 +40,18 @@ const Navbar = () => {
           </button>
         </div>
 
-        <Link className="btn btn-primary-outline desktop-element" to="#">
-          Login
-        </Link>
+        {userState.userToken ? (
+          <button
+            className="btn btn-primary-outline desktop-element"
+            onClick={() => userDispatch({ type: "LOG_OUT" })}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link className="btn btn-primary-outline desktop-element" to="/login">
+            Login
+          </Link>
+        )}
       </nav>
     </header>
   );
