@@ -8,20 +8,42 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    categoryName: "action",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique error sit ipsam natus explicabo recusandae accusamus temporibus quod impedit.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    categoryName: "adventure",
+
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+      "Alias tempore eius mollitia animi quasi! Neque voluptatem deserunt porro tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    categoryName: "arcade-and-puzzle",
+
     description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "Similique error sit ipsam natus explicabo recusandae accusamus temporibus quod impedit.Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "racing",
+
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias tempore eius mollitia animi quasi! Neque voluptatem deserunt porro tenetur.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "simulation",
+
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias tempore eius mollitia animi quasi! Neque voluptatem deserunt porro tenetur.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "sports",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias tempore eius mollitia animi quasi! Neque voluptatem deserunt porro tenetur.",
   },
 ];

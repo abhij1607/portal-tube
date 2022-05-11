@@ -1,0 +1,12 @@
+.card-container {
+  max-width: 28rem;
+  height: unset;
+}
+.card-info {
+  align-items: baseline;
+}
+.additional-options {
+  position: absolute;
+  background: var(--background-color);
+  right: 30px;
+}
