@@ -2,7 +2,7 @@ import "./login.css";
 import { useState } from "react";
 import { requestLogin } from "../../utils/server-request";
 import { useAuth } from "../../context/auth-context";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const testCredentials = {
   email: "adarshbalika@gmail.com",
@@ -35,7 +35,7 @@ const Login = () => {
     <main className="align-center">
       <div className="box-shadow form-box auto-container align-center">
         <h1 className="h2">Login</h1>
-        <form onSubmit={handleLogin}>
+        <form className="flex-column" onSubmit={handleLogin}>
           <div className="input-box">
             <label className="label p-md txt-wt-md" htmlFor="email">
               Enter your email:
@@ -91,6 +91,9 @@ const Login = () => {
           >
             Fill in test credentials
           </button>
+          <Link to="/signup" className="align-center">
+            Create new account
+          </Link>
         </form>
       </div>
     </main>
