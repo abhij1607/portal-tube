@@ -28,4 +28,14 @@ const requestLogin = async (dispatch, body, navigate, location) => {
   }
 };
 
-export { fetchVideos, fetchCategories, requestLogin };
+const requestSignUp = async (dispatch, requestBody, navigate, location) => {
+  try {
+    const response = await axios.post("/api/auth/signup", requestBody);
+    dispatch({ type: "SIGN_UP", payload: response.data });
+    navigate(location?.state?.from?.pathname || "/", { replace: true });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { fetchVideos, fetchCategories, requestLogin, requestSignUp };

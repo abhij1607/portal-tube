@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "./components/AppLayout/AppLayout";
 import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Login/Login";
+import { SignUp } from "./pages/Signup/Signup";
 // import { RequiresAuth } from "./RequireAuth/RequiresAuth";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Route>
       </Routes>
     </>

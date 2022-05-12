@@ -17,6 +17,15 @@ const initialUserState = {
 
 const authReducer = (state, { type, payload }) => {
   switch (type) {
+    case "SIGN_UP":
+      localStorage.setItem("userToken", payload.encodedToken);
+      localStorage.setItem("userDetails", JSON.stringify(payload.foundUser));
+      return {
+        ...state,
+        userDetails: payload.foundUser,
+        userToken: payload.encodedToken,
+      };
+
     case "LOG_IN":
       localStorage.setItem("userToken", payload.encodedToken);
       localStorage.setItem("userDetails", JSON.stringify(payload.foundUser));
@@ -26,11 +35,10 @@ const authReducer = (state, { type, payload }) => {
         userToken: payload.encodedToken,
       };
 
-    case "LOG_OUT": {
+    case "LOG_OUT":
       localStorage.removeItem("userToken");
       localStorage.removeItem("userDetails");
       return { ...initialUserState };
-    }
 
     default:
       return state;

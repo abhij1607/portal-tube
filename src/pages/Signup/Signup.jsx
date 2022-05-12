@@ -1,30 +1,27 @@
-import "./login.css";
+import "./Signup.css";
 import { useState } from "react";
-import { requestLogin } from "../../utils/server-request";
+import { requestSignUp } from "../../utils/server-request";
 import { useAuth } from "../../context/auth-context";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 
-const testCredentials = {
-  email: "adarshbalika@gmail.com",
-  password: "adarshBalika123",
-};
-
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const { userDispatch } = useAuth();
 
   const navigate = useNavigate();
   let location = useLocation();
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    requestLogin(
+    requestSignUp(
       userDispatch,
       {
         email: email,
         password: password,
+        name: name,
       },
       navigate,
       location
@@ -34,8 +31,23 @@ const Login = () => {
   return (
     <main className="align-center">
       <div className="box-shadow form-box auto-container align-center">
-        <h1 className="h2">Login</h1>
-        <form className="flex-column" onSubmit={handleLogin}>
+        <h1 className="h2">SignUp</h1>
+        <form className="flex-column" onSubmit={handleSignUp}>
+          <div className="input-box">
+            <label className="label p-md txt-wt-md" htmlFor="email">
+              Enter your Name:
+            </label>
+            <input
+              className="input-border input"
+              placeholder="Abhi"
+              type="Name"
+              id="Name"
+              name="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
           <div className="input-box">
             <label className="label p-md txt-wt-md" htmlFor="email">
               Enter your email:
@@ -48,6 +60,7 @@ const Login = () => {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="input-box">
@@ -62,6 +75,7 @@ const Login = () => {
               name="pwd"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div className="input-checkbox">
@@ -78,21 +92,10 @@ const Login = () => {
             type="submit"
             value="Submit"
           >
-            Submit
+            SignUp
           </button>
-          <button
-            className="btn btn-fill btn-primary btn-lg mg-y-base"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              setEmail(testCredentials.email);
-              setPassword(testCredentials.password);
-            }}
-          >
-            Fill in test credentials
-          </button>
-          <Link to="/signup" className="align-center">
-            Create new account
+          <Link className="pd-y-base align-center" to="/login">
+            Already have an account
           </Link>
         </form>
       </div>
@@ -100,4 +103,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { SignUp };
