@@ -18,4 +18,14 @@ const fetchCategories = async (dispatch) => {
   }
 };
 
-export { fetchVideos, fetchCategories };
+const requestLogin = async (dispatch, body, navigate, location) => {
+  try {
+    const response = await axios.post("/api/auth/login", body);
+    dispatch({ type: "LOG_IN", payload: response.data });
+    navigate(location?.state?.from?.pathname || "/", { replace: true });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { fetchVideos, fetchCategories, requestLogin };

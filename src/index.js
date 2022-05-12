@@ -4,6 +4,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { DataProvider } from "./context/data-context";
+import { AuthProvider } from "./context/auth-context";
 // Call make Server
 makeServer();
 
@@ -14,7 +15,9 @@ const root = createRoot(container); // createRoot(container!) if you use TypeScr
 root.render(
   <BrowserRouter>
     <DataProvider>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </DataProvider>
   </BrowserRouter>
 );
