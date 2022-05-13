@@ -14,7 +14,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-list pd-y-base">
-            <Link className="link" to="/">
+            <Link className="link" to="/playlist">
               <i className="fa fa-folder-open" aria-hidden="true" />
               Playlist
             </Link>
