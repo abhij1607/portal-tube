@@ -1,4 +1,3 @@
-import "./SinglePlaylist.css";
 import { PlaylistVideoCard } from "./PlaylistVideoCard/PlaylistVideoCard";
 
 const SinglePlaylist = () => {
