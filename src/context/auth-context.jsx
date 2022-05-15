@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { authReducer, initialUserState } from "../utils/auth-reducer";
-import { fetchPlaylists } from "../utils/server-request";
+import { fetchPlaylists, fetchWatchLater } from "../utils/server-request";
 
 const AuthContext = createContext();
 
@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
       headers: { authorization: userState.userToken },
     };
     fetchPlaylists(headers, userDispatch);
+    fetchWatchLater(headers, userDispatch);
   }, [userState.userToken]);
   return (
     <AuthContext.Provider value={{ userState, userDispatch }}>
