@@ -40,6 +40,21 @@ const authReducer = (state, { type, payload }) => {
       localStorage.removeItem("userDetails");
       return { ...initialUserState };
 
+    case "UPDATE_PLAYLIST":
+      return {
+        ...state,
+        userDetails: { ...state.userDetails, playlists: payload },
+      };
+
+    case "UPDATE_SINGLE_PLAYLIST": {
+      const newPlaylists = state.userDetails.playlists.map((item) =>
+        item._id === payload._id ? payload : item
+      );
+      return {
+        ...state,
+        userDetails: { ...state.userDetails, playlists: newPlaylists },
+      };
+    }
     default:
       return state;
   }

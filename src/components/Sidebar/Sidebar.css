@@ -1,6 +1,6 @@
 .sidebar-container {
   border-right: 1px solid var(--primary-color);
-  width: 12vw;
+  width: max-content;
   z-index: 2;
   position: sticky;
   top: 0;
