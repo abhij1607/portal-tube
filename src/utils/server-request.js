@@ -119,7 +119,6 @@ const requestDeleteVideoInPlaylist = async (
       type: "UPDATE_SINGLE_PLAYLIST",
       payload: response.data.playlist,
     });
-    console.log(response);
   } catch (error) {
     console.log(error);
   }
