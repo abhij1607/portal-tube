@@ -42,7 +42,10 @@ const VideoCard = ({ video }) => {
               <span>{getNumberInFormat(video.likes)} likes</span>
             </div>
           </div>
-          <button className="align-right pd-x-xsm" onClick={toggleVideoOption}>
+          <button
+            className="align-right pd-x-xsm btn btn-ellipsis-bg"
+            onClick={toggleVideoOption}
+          >
             <i className="fas fa-ellipsis-v" />
           </button>
 
