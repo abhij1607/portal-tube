@@ -6,6 +6,7 @@ import { Login } from "./pages/Login/Login";
 import { SignUp } from "./pages/Signup/Signup";
 import { Playlist } from "./pages/Playlist/Playlist";
 import { SinglePlaylist } from "./pages/SinglePlaylist/SinglePlaylist";
+import { WatchLater } from "./pages/WatchLater/WatchLater";
 import { RequiresAuth } from "./RequireAuth/RequiresAuth";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route element={<RequiresAuth />}>
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/playlist/:playlistid" element={<SinglePlaylist />} />
+            <Route path="/watchlater" element={<WatchLater />} />
           </Route>
         </Route>
       </Routes>
