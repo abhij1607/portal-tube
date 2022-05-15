@@ -58,10 +58,10 @@ const PlaylistModal = ({ video, setIsAddToPlaylistActive }) => {
         <div className="modal-container pd-x-lg">
           <button
             id="modal-close"
-            className="modal-close"
+            className="modal-close btn btn-circle-bg"
             onClick={() => setIsAddToPlaylistActive(false)}
           >
-            x
+            <i className="fa fa-times" aria-hidden="true" />
           </button>
 
           <h3>Save to...</h3>

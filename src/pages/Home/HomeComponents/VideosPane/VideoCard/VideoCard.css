@@ -17,10 +17,3 @@
 .additional-options > li:hover {
   background-color: var(--secondary-color);
 }
-.btn-ellipsis-bg:hover {
-  background: var(--complementry-color);
-  width: 30px;
-  height: 30px;
-  color: white;
-  border-radius: 50%;
-}

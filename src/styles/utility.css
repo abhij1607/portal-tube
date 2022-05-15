@@ -84,3 +84,12 @@
 .wd-full {
   width: 100%;
 }
+/*custom button*/
+.btn-circle-bg:hover {
+  background: var(--complementry-color);
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 50%;
+  padding: 0;
+}

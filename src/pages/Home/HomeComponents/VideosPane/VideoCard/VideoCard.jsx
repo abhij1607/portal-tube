@@ -43,7 +43,7 @@ const VideoCard = ({ video }) => {
             </div>
           </div>
           <button
-            className="align-right pd-x-xsm btn btn-ellipsis-bg"
+            className="align-right pd-x-xsm btn btn-circle-bg"
             onClick={toggleVideoOption}
           >
             <i className="fas fa-ellipsis-v" />
