@@ -38,4 +38,102 @@ const requestSignUp = async (dispatch, requestBody, navigate, location) => {
   }
 };
 
-export { fetchVideos, fetchCategories, requestLogin, requestSignUp };
+const fetchPlaylists = async (headers, dispatch) => {
+  try {
+    const response = await axios.get("/api/user/playlists", headers);
+    dispatch({ type: "UPDATE_PLAYLIST", payload: response.data.playlists });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestAddPlaylist = async (requestBody, headers, dispatch) => {
+  try {
+    const response = await axios.post(
+      "/api/user/playlists",
+      requestBody,
+      headers
+    );
+    dispatch({ type: "UPDATE_PLAYLIST", payload: response.data.playlists });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestDeletePlaylist = async (playlistId, headers, dispatch) => {
+  try {
+    const response = await axios.delete(
+      `/api/user/playlists/${playlistId}`,
+      headers
+    );
+    dispatch({ type: "UPDATE_PLAYLIST", payload: response.data.playlists });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchSinglePlaylist = async (playlistId, headers) => {
+  try {
+    const response = await axios.get(
+      `/api/user/playlists/${playlistId}`,
+      headers
+    );
+    return response.data.playlist;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const requestAddVideoInPlaylist = async (
+  playlistId,
+  requestBody,
+  headers,
+  dispatch
+) => {
+  try {
+    const response = await axios.post(
+      `/api/user/playlists/${playlistId}`,
+      { video: requestBody },
+      headers
+    );
+    dispatch({
+      type: "UPDATE_SINGLE_PLAYLIST",
+      payload: response.data.playlist,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestDeleteVideoInPlaylist = async (
+  playlistId,
+  videoId,
+  headers,
+  dispatch
+) => {
+  try {
+    const response = await axios.delete(
+      `/api/user/playlists/${playlistId}/${videoId}`,
+      headers
+    );
+    dispatch({
+      type: "UPDATE_SINGLE_PLAYLIST",
+      payload: response.data.playlist,
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  fetchVideos,
+  fetchCategories,
+  requestLogin,
+  requestSignUp,
+  fetchPlaylists,
+  requestAddPlaylist,
+  requestDeletePlaylist,
+  fetchSinglePlaylist,
+  requestAddVideoInPlaylist,
+  requestDeleteVideoInPlaylist,
+};
