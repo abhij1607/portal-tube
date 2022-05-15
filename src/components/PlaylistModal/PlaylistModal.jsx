@@ -75,6 +75,9 @@ const PlaylistModal = ({ video, setIsAddToPlaylistActive }) => {
                   value={playlist.title}
                   type="checkbox"
                   onChange={() => handleVideoInPlaylist(playlist)}
+                  checked={playlist.videos.some(
+                    (item) => item._id === video._id
+                  )}
                 />
                 {playlist.title}
               </label>
