@@ -21,6 +21,9 @@
 .navigation .link {
   color: var(--sec-text);
   text-decoration: none;
+  display: flex;
+  gap: var(--size-sm);
+  align-items: baseline;
 }
 .navigation .link-active {
   font-weight: bold;
