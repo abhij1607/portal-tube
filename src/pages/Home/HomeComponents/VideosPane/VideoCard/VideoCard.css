@@ -7,6 +7,13 @@
 }
 .additional-options {
   position: absolute;
-  background: var(--background-color);
-  right: 30px;
+  background: var(--white);
+  border-radius: var(--size-2xs);
+  right: 20px;
+  bottom: -20px;
+  width: 20rem;
+  z-index: 2;
+}
+.additional-options > li:hover {
+  background-color: var(--secondary-color);
 }
