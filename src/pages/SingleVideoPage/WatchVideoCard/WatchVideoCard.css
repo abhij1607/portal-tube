@@ -1,0 +1,18 @@
+.card-container.watch-video-card {
+  max-width: unset;
+  width: unset;
+  margin: 3rem 1.8rem;
+  box-shadow: none;
+}
+.card-title.video-title {
+  font-size: var(--size--xl);
+}
+.action-icon {
+  flex-grow: 1;
+  align-items: flex-end;
+  display: flex;
+  gap: 14px;
+}
+.card-body {
+  border-top: 1px solid var(--complementry-color);
+}
