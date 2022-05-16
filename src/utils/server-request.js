@@ -124,6 +124,49 @@ const requestDeleteVideoInPlaylist = async (
   }
 };
 
+const fetchWatchLater = async (headers, dispatch) => {
+  try {
+    const response = await axios.get("/api/user/watchlater", headers);
+    dispatch({
+      type: "UPDATE_WATCHLATER",
+      payload: response.data.watchlater,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestAddVideoInWatchLater = async (requestBody, headers, dispatch) => {
+  try {
+    const response = await axios.post(
+      "/api/user/watchlater",
+      { video: requestBody },
+      headers
+    );
+    dispatch({
+      type: "UPDATE_WATCHLATER",
+      payload: response.data.watchlater,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestDeleteVideoInWatchLater = async (videoId, headers, dispatch) => {
+  try {
+    const response = await axios.delete(
+      `/api/user/watchlater/${videoId}`,
+      headers
+    );
+    dispatch({
+      type: "UPDATE_WATCHLATER",
+      payload: response.data.watchlater,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   fetchVideos,
   fetchCategories,
@@ -135,4 +178,7 @@ export {
   fetchSinglePlaylist,
   requestAddVideoInPlaylist,
   requestDeleteVideoInPlaylist,
+  fetchWatchLater,
+  requestAddVideoInWatchLater,
+  requestDeleteVideoInWatchLater,
 };

@@ -1,11 +1,14 @@
 import "./styles/index.css";
 import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "./components/AppLayout/AppLayout";
-import { Home } from "./pages/Home/Home";
-import { Login } from "./pages/Login/Login";
-import { SignUp } from "./pages/Signup/Signup";
-import { Playlist } from "./pages/Playlist/Playlist";
-import { SinglePlaylist } from "./pages/SinglePlaylist/SinglePlaylist";
+import {
+  Home,
+  Login,
+  SignUp,
+  Playlist,
+  SinglePlaylist,
+  WatchLater,
+} from "./pages";
 import { RequiresAuth } from "./RequireAuth/RequiresAuth";
 
 function App() {
@@ -19,6 +22,7 @@ function App() {
           <Route element={<RequiresAuth />}>
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/playlist/:playlistid" element={<SinglePlaylist />} />
+            <Route path="/watchlater" element={<WatchLater />} />
           </Route>
         </Route>
       </Routes>

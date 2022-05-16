@@ -20,19 +20,19 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-list pd-y-base">
-            <Link className="link" to="/">
+            <Link className="link" to="/liked">
               <i className="fa fa-thumbs-up" aria-hidden="true" />
               Liked
             </Link>
           </li>
           <li className="nav-list pd-y-base">
-            <Link className="link" to="/">
+            <Link className="link" to="/watchlater">
               <i className="fa fa-bookmark" aria-hidden="true" />
               Watch Later
             </Link>
           </li>
           <li className="nav-list pd-y-base">
-            <Link className="link" to="/">
+            <Link className="link" to="/history">
               <i className="fa fa-history" aria-hidden="true" />
               History
             </Link>

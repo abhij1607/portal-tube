@@ -4,13 +4,23 @@ import { useState } from "react";
 import { useAuth } from "../../../../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import { PlaylistModal } from "../../../../../components/PlaylistModal/PlaylistModal";
+import {
+  requestAddVideoInWatchLater,
+  requestDeleteVideoInWatchLater,
+} from "../../../../../utils/server-request";
 
 const VideoCard = ({ video }) => {
   const [isVideoOptionsActive, setIsVideoOptionsActive] = useState(false);
   const [isAddToPlaylistActive, setIsAddToPlaylistActive] = useState(false);
   const {
-    userState: { userToken },
+    userState: {
+      userToken,
+      userDetails: { watchlater },
+    },
+    userDispatch,
   } = useAuth();
+
+  const headers = { headers: { authorization: userToken } };
 
   const navigate = useNavigate();
 
@@ -19,9 +29,25 @@ const VideoCard = ({ video }) => {
   };
 
   const handleAddToPlaylist = () => {
-    if (!userToken) navigate("/login");
+    if (!userToken) {
+      navigate("/login");
+    }
     setIsAddToPlaylistActive(true);
     setIsVideoOptionsActive(false);
+  };
+
+  const handleAddToWatchLater = () => {
+    if (!userToken) {
+      navigate("/login");
+    }
+    requestAddVideoInWatchLater(video, headers, userDispatch);
+  };
+
+  const handleDeleteVideoInWatchLater = () => {
+    if (!userToken) {
+      navigate("/login");
+    }
+    requestDeleteVideoInWatchLater(video._id, headers, userDispatch);
   };
 
   return (
@@ -51,7 +77,21 @@ const VideoCard = ({ video }) => {
 
           {isVideoOptionsActive && (
             <ul className="additional-options box-shadow pd-y-sm">
-              <li className="pd-x-base pd-y-xs">Add to watch later</li>
+              {watchlater.some((item) => item._id === video._id) ? (
+                <li
+                  className="pd-x-base pd-y-xs"
+                  onClick={handleDeleteVideoInWatchLater}
+                >
+                  Remove from watchlater
+                </li>
+              ) : (
+                <li
+                  className="pd-x-base pd-y-xs"
+                  onClick={handleAddToWatchLater}
+                >
+                  Add to watch later
+                </li>
+              )}
               <li className="pd-x-base pd-y-xs" onClick={handleAddToPlaylist}>
                 Add to playlist
               </li>
