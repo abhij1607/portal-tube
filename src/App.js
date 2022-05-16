@@ -8,6 +8,7 @@ import {
   Playlist,
   SinglePlaylist,
   WatchLater,
+  SingleVideoPage,
 } from "./pages";
 import { RequiresAuth } from "./RequireAuth/RequiresAuth";
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/watch/:watchid" element={<SingleVideoPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route element={<RequiresAuth />}>
