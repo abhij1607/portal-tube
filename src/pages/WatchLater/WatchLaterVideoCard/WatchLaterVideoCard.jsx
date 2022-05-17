@@ -1,4 +1,5 @@
 import "./WatchLaterVideoCard.css";
+import { Link } from "react-router-dom";
 import { requestDeleteVideoInWatchLater } from "../../../utils/server-request";
 import { useAuth } from "../../../context/auth-context";
 
@@ -10,11 +11,13 @@ const WatchLaterVideoCard = ({ video }) => {
 
   const headers = { headers: { authorization: userToken } };
 
-  const handleRemoveVideo = () =>
+  const handleRemoveVideo = (e) => {
+    e.preventDefault();
     requestDeleteVideoInWatchLater(video._id, headers, userDispatch);
+  };
 
   return (
-    <div className="card-container playlist-card">
+    <Link className="card-container playlist-card" to={`/watch/${video._id}`}>
       <div className="card-part-1">
         <img
           className="card-img-top"
@@ -29,7 +32,7 @@ const WatchLaterVideoCard = ({ video }) => {
           <i className="fa fa-2x fa-trash" />
         </button>
       </div>
-    </div>
+    </Link>
   );
 };
 
