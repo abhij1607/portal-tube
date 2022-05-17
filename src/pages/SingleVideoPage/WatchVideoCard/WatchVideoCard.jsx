@@ -1,30 +1,22 @@
 import "./WatchVideoCard.css";
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
-// import { useData } from "../../../context/data-context";
 import { useAuth } from "../../../context/auth-context";
 import { PlaylistModal } from "../../../components/PlaylistModal/PlaylistModal";
-
 import {
-  fetchVideo,
   requestAddVideoInWatchLater,
   requestDeleteVideoInWatchLater,
 } from "../../../utils/server-request";
 import { getNumberInFormat } from "../../../utils/number-format";
 
-const WatchVideoCard = () => {
-  const [video, setVideo] = useState({});
+const WatchVideoCard = ({ video }) => {
   const [isAddToPlaylistActive, setIsAddToPlaylistActive] = useState(false);
-  const { watchid } = useParams();
-  const navigate = useNavigate();
 
-  // const {
-  //   dataState: { videos },
-  // } = useData();
+  const navigate = useNavigate();
 
   const {
     userState: {
@@ -35,13 +27,6 @@ const WatchVideoCard = () => {
   } = useAuth();
 
   const headers = { headers: { authorization: userToken } };
-
-  useEffect(() => {
-    (async () => {
-      const currentVideo = await fetchVideo(watchid);
-      setVideo(currentVideo);
-    })();
-  }, []);
 
   const handleAddToWatchLater = () => {
     if (!userToken) {
@@ -62,13 +47,12 @@ const WatchVideoCard = () => {
     setIsAddToPlaylistActive(true);
   };
 
-  console.log(video);
   return (
     <div className="card-container watch-video-card">
       <div className="player-wrapper">
         <ReactPlayer
           className="react-player"
-          url={`https://www.youtube.com/watch?v=${watchid}`}
+          url={`https://www.youtube.com/watch?v=${video._id}`}
           controls={true}
           playing={true}
           width="100%"
