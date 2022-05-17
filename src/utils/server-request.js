@@ -176,6 +176,17 @@ const fetchVideo = async (videoId) => {
   }
 };
 
+const fetchRelatedVideos = async (videoid, category) => {
+  try {
+    const response = await axios.get("/api/videos");
+    return response.data.videos.filter(
+      (item) => item.category.includes(category) && item._id !== videoid
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   fetchVideos,
   fetchCategories,
@@ -191,4 +202,5 @@ export {
   requestAddVideoInWatchLater,
   requestDeleteVideoInWatchLater,
   fetchVideo,
+  fetchRelatedVideos,
 };
