@@ -61,6 +61,12 @@ const authReducer = (state, { type, payload }) => {
         userDetails: { ...state.userDetails, watchlater: payload },
       };
 
+    case "UPDATE_LIKES":
+      return {
+        ...state,
+        userDetails: { ...state.userDetails, likes: payload },
+      };
+
     default:
       return state;
   }
