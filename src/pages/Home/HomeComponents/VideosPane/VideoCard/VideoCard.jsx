@@ -24,11 +24,13 @@ const VideoCard = ({ video }) => {
 
   const navigate = useNavigate();
 
-  const toggleVideoOption = () => {
+  const toggleVideoOption = (e) => {
+    e.stopPropagation();
     setIsVideoOptionsActive((previous) => !previous);
   };
 
-  const handleAddToPlaylist = () => {
+  const handleAddToPlaylist = (e) => {
+    e.stopPropagation();
     if (!userToken) {
       navigate("/login");
     }
@@ -36,14 +38,16 @@ const VideoCard = ({ video }) => {
     setIsVideoOptionsActive(false);
   };
 
-  const handleAddToWatchLater = () => {
+  const handleAddToWatchLater = (e) => {
+    e.stopPropagation();
     if (!userToken) {
       navigate("/login");
     }
     requestAddVideoInWatchLater(video, headers, userDispatch);
   };
 
-  const handleDeleteVideoInWatchLater = () => {
+  const handleDeleteVideoInWatchLater = (e) => {
+    e.stopPropagation();
     if (!userToken) {
       navigate("/login");
     }
@@ -52,7 +56,10 @@ const VideoCard = ({ video }) => {
 
   return (
     <>
-      <div className="card-container">
+      <div
+        className="card-container"
+        onClick={() => navigate(`/watch/${video._id}`)}
+      >
         <img
           className="card-img-top"
           src={video.videoThumbnail}

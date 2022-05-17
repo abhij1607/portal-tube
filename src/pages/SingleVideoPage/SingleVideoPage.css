@@ -1,0 +1,3 @@
+.wrapper.wrapper-video-page {
+  grid-template-columns: 3fr 1fr;
+}
