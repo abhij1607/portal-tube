@@ -1,18 +1,40 @@
 import "./WatchVideoCard.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
+import { RiPlayListAddFill } from "react-icons/ri";
+import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
+import { AiOutlineLike } from "react-icons/ai";
 // import { useData } from "../../../context/data-context";
-import { fetchVideo } from "../../../utils/server-request";
+import { useAuth } from "../../../context/auth-context";
+import { PlaylistModal } from "../../../components/PlaylistModal/PlaylistModal";
+
+import {
+  fetchVideo,
+  requestAddVideoInWatchLater,
+  requestDeleteVideoInWatchLater,
+} from "../../../utils/server-request";
 import { getNumberInFormat } from "../../../utils/number-format";
 
 const WatchVideoCard = () => {
   const [video, setVideo] = useState({});
+  const [isAddToPlaylistActive, setIsAddToPlaylistActive] = useState(false);
   const { watchid } = useParams();
+  const navigate = useNavigate();
 
   // const {
   //   dataState: { videos },
   // } = useData();
+
+  const {
+    userState: {
+      userToken,
+      userDetails: { watchlater },
+    },
+    userDispatch,
+  } = useAuth();
+
+  const headers = { headers: { authorization: userToken } };
 
   useEffect(() => {
     (async () => {
@@ -21,7 +43,25 @@ const WatchVideoCard = () => {
     })();
   }, []);
 
-  // const video = videos.find((video) => video._id === watchid);
+  const handleAddToWatchLater = () => {
+    if (!userToken) {
+      navigate("/login");
+    }
+    requestAddVideoInWatchLater(video, headers, userDispatch);
+  };
+
+  const handleDeleteVideoInWatchLater = () => {
+    requestDeleteVideoInWatchLater(video._id, headers, userDispatch);
+  };
+
+  const handleAddToPlaylist = (e) => {
+    e.stopPropagation();
+    if (!userToken) {
+      navigate("/login");
+    }
+    setIsAddToPlaylistActive(true);
+  };
+
   console.log(video);
   return (
     <div className="card-container watch-video-card">
@@ -43,20 +83,48 @@ const WatchVideoCard = () => {
           {getNumberInFormat(video.views)} views
         </span>
         <div className="align-right flex-row gap-2">
-          <button className="action-icon">
-            <i className="fa fa-heart" /> Like
+          <button className="action-icon btn">
+            <AiOutlineLike />
+            Like
           </button>
-          <button className="action-icon">
-            <i className="fa fa-share-alt" aria-hidden="true" /> Watch Later
-          </button>
-          <button className="action-icon">
-            <i className="fas fa-ellipsis-v" /> Add To Playlist
+
+          {watchlater.some((item) => item._id === video._id) ? (
+            <button
+              className="action-icon btn"
+              onClick={handleDeleteVideoInWatchLater}
+            >
+              <MdWatchLater /> Remove Watch Later
+            </button>
+          ) : (
+            <button className="action-icon btn" onClick={handleAddToWatchLater}>
+              <MdOutlineWatchLater /> Watch Later
+            </button>
+          )}
+
+          <button className="action-icon btn" onClick={handleAddToPlaylist}>
+            <RiPlayListAddFill /> Add To Playlist
           </button>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body pd-y-base">
+        <div className="flex-row gap-2 item-center">
+          <img
+            width="35"
+            height="35"
+            className="img-responsive img-round"
+            src={video.channelThumbnail}
+            alt={video.channelName}
+          />
+          <span>{video.channelName}</span>
+        </div>
         <p className="description">{video.description}</p>
       </div>
+      {isAddToPlaylistActive && (
+        <PlaylistModal
+          video={video}
+          setIsAddToPlaylistActive={setIsAddToPlaylistActive}
+        />
+      )}
     </div>
   );
 };
