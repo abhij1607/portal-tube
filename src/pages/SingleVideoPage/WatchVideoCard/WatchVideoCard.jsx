@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { useAuth } from "../../../context/auth-context";
 import { PlaylistModal } from "../../../components/PlaylistModal/PlaylistModal";
 import {
   requestAddVideoInWatchLater,
   requestDeleteVideoInWatchLater,
+  requestAddVideoInLikes,
+  requestDeleteVideoInLikes,
 } from "../../../utils/server-request";
 import { getNumberInFormat } from "../../../utils/number-format";
 
@@ -21,7 +23,7 @@ const WatchVideoCard = ({ video }) => {
   const {
     userState: {
       userToken,
-      userDetails: { watchlater },
+      userDetails: { watchlater, likes },
     },
     userDispatch,
   } = useAuth();
@@ -46,6 +48,16 @@ const WatchVideoCard = ({ video }) => {
     }
     setIsAddToPlaylistActive(true);
   };
+  const handleAddToLikes = () => {
+    if (!userToken) {
+      navigate("/login");
+    }
+    requestAddVideoInLikes(video, headers, userDispatch);
+  };
+
+  const handleDeleteVideoInLikes = () => {
+    requestDeleteVideoInLikes(video._id, headers, userDispatch);
+  };
 
   return (
     <div className="card-container watch-video-card mg-y-xl">
@@ -67,10 +79,23 @@ const WatchVideoCard = ({ video }) => {
           {getNumberInFormat(video.views)} views
         </span>
         <div className="align-right flex-row gap-2">
-          <button className="action-icon btn txt-md flex-row item-center">
-            <AiOutlineLike />
-            Like
-          </button>
+          {likes.some((item) => item._id === video._id) ? (
+            <button
+              className="action-icon btn txt-md flex-row item-center"
+              onClick={handleDeleteVideoInLikes}
+            >
+              <AiFillLike />
+              Like
+            </button>
+          ) : (
+            <button
+              className="action-icon btn txt-md flex-row item-center"
+              onClick={handleAddToLikes}
+            >
+              <AiOutlineLike />
+              Like
+            </button>
+          )}
 
           {watchlater.some((item) => item._id === video._id) ? (
             <button
