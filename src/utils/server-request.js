@@ -167,6 +167,15 @@ const requestDeleteVideoInWatchLater = async (videoId, headers, dispatch) => {
   }
 };
 
+const fetchVideo = async (videoId) => {
+  try {
+    const response = await axios.get(`/api/video/${videoId}`);
+    return response.data.video;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   fetchVideos,
   fetchCategories,
@@ -181,4 +190,5 @@ export {
   fetchWatchLater,
   requestAddVideoInWatchLater,
   requestDeleteVideoInWatchLater,
+  fetchVideo,
 };
