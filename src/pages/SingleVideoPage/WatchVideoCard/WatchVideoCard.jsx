@@ -48,7 +48,7 @@ const WatchVideoCard = ({ video }) => {
   };
 
   return (
-    <div className="card-container watch-video-card">
+    <div className="card-container watch-video-card mg-y-xl">
       <div className="player-wrapper">
         <ReactPlayer
           className="react-player"
@@ -67,25 +67,31 @@ const WatchVideoCard = ({ video }) => {
           {getNumberInFormat(video.views)} views
         </span>
         <div className="align-right flex-row gap-2">
-          <button className="action-icon btn">
+          <button className="action-icon btn txt-md flex-row item-center">
             <AiOutlineLike />
             Like
           </button>
 
           {watchlater.some((item) => item._id === video._id) ? (
             <button
-              className="action-icon btn"
+              className="action-icon btn txt-md flex-row item-center"
               onClick={handleDeleteVideoInWatchLater}
             >
-              <MdWatchLater /> Remove Watch Later
+              <MdWatchLater /> Watch Later
             </button>
           ) : (
-            <button className="action-icon btn" onClick={handleAddToWatchLater}>
+            <button
+              className="action-icon btn txt-md flex-row item-center"
+              onClick={handleAddToWatchLater}
+            >
               <MdOutlineWatchLater /> Watch Later
             </button>
           )}
 
-          <button className="action-icon btn" onClick={handleAddToPlaylist}>
+          <button
+            className="action-icon btn txt-md flex-row item-center"
+            onClick={handleAddToPlaylist}
+          >
             <RiPlayListAddFill /> Add To Playlist
           </button>
         </div>

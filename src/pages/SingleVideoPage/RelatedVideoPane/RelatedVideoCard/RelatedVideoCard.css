@@ -1,6 +1,9 @@
 .card-container {
+}
+.card-container.related-videos {
   max-width: 28rem;
   height: unset;
+  margin: 1.8rem 0;
 }
 .card-info {
   align-items: baseline;

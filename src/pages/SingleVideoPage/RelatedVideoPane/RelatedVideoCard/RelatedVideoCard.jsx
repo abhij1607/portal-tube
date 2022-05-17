@@ -6,7 +6,7 @@ const VideoCard = ({ video }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="card-container"
+      className="card-container related-videos"
       onClick={() => navigate(`/watch/${video._id}`)}
     >
       <img
