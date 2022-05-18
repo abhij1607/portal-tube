@@ -187,6 +187,18 @@ const fetchRelatedVideos = async (videoid, category) => {
   }
 };
 
+const fetchHistory = async (headers, dispatch) => {
+  try {
+    const response = await axios.get("/api/user/history", headers);
+    dispatch({
+      type: "UPDATE_HISTORY",
+      payload: response.data.history,
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const fetchLikes = async (headers, dispatch) => {
   try {
     const response = await axios.get("/api/user/likes", headers);
@@ -194,6 +206,22 @@ const fetchLikes = async (headers, dispatch) => {
       type: "UPDATE_LIKES",
       payload: response.data.likes,
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestAddVideoInHistory = async (requestBody, headers, dispatch) => {
+  try {
+    const response = await axios.post(
+      "/api/user/history",
+      { video: requestBody },
+      headers
+    );
+    dispatch({
+      type: "UPDATE_HISTORY",
+      payload: response.data.history,
+       });
   } catch (error) {
     console.log(error);
   }
@@ -210,6 +238,33 @@ const requestAddVideoInLikes = async (requestBody, headers, dispatch) => {
       type: "UPDATE_LIKES",
       payload: response.data.likes,
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestDeleteVideoInHistory = async (videoId, headers, dispatch) => {
+  try {
+    const response = await axios.delete(
+      `/api/user/history/${videoId}`,
+      headers
+    );
+    dispatch({
+      type: "UPDATE_HISTORY",
+      payload: response.data.history,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestDeleteAllHistory = async (headers, dispatch) => {
+  try {
+    const response = await axios.delete("/api/user/history/all", headers);
+    dispatch({
+      type: "UPDATE_HISTORY",
+      payload: response.data.history,
+      });
   } catch (error) {
     console.log(error);
   }
@@ -243,6 +298,10 @@ export {
   requestDeleteVideoInWatchLater,
   fetchVideo,
   fetchRelatedVideos,
+  fetchHistory,
+  requestAddVideoInHistory,
+  requestDeleteVideoInHistory,
+  requestDeleteAllHistory,
   fetchLikes,
   requestAddVideoInLikes,
   requestDeleteVideoInLikes,
