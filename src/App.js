@@ -11,6 +11,7 @@ import {
   SingleVideoPage,
   History,
   Liked,
+  PageNotFound,
 } from "./pages";
 import { RequiresAuth } from "./RequireAuth/RequiresAuth";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/watch/:watchid" element={<SingleVideoPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<PageNotFound />} />
           <Route element={<RequiresAuth />}>
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/playlist/:playlistid" element={<SinglePlaylist />} />
