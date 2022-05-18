@@ -10,6 +10,7 @@ import {
   WatchLater,
   SingleVideoPage,
   History,
+  Liked,
 } from "./pages";
 import { RequiresAuth } from "./RequireAuth/RequiresAuth";
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/playlist/:playlistid" element={<SinglePlaylist />} />
             <Route path="/watchlater" element={<WatchLater />} />
             <Route path="/history" element={<History />} />
+            <Route path="/liked" element={<Liked />} />
           </Route>
         </Route>
       </Routes>
