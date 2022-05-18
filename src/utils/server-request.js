@@ -187,6 +187,46 @@ const fetchRelatedVideos = async (videoid, category) => {
   }
 };
 
+const fetchLikes = async (headers, dispatch) => {
+  try {
+    const response = await axios.get("/api/user/likes", headers);
+    dispatch({
+      type: "UPDATE_LIKES",
+      payload: response.data.likes,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestAddVideoInLikes = async (requestBody, headers, dispatch) => {
+  try {
+    const response = await axios.post(
+      "/api/user/likes",
+      { video: requestBody },
+      headers
+    );
+    dispatch({
+      type: "UPDATE_LIKES",
+      payload: response.data.likes,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestDeleteVideoInLikes = async (videoId, headers, dispatch) => {
+  try {
+    const response = await axios.delete(`/api/user/likes/${videoId}`, headers);
+    dispatch({
+      type: "UPDATE_LIKES",
+      payload: response.data.likes,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   fetchVideos,
   fetchCategories,
@@ -203,4 +243,7 @@ export {
   requestDeleteVideoInWatchLater,
   fetchVideo,
   fetchRelatedVideos,
+  fetchLikes,
+  requestAddVideoInLikes,
+  requestDeleteVideoInLikes,
 };
