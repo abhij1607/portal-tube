@@ -61,11 +61,18 @@
   padding: unset;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .mobile-element {
     display: block;
   }
   .desktop-element {
     display: none;
+  }
+  .navigation .link {
+    width: max-content;
+    gap: var(--size-xs);
+  }
+  .top-nav .navigation {
+    padding: var(--size-16) var(--size-12);
   }
 }
