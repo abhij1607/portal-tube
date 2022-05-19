@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar-container box-shadow">
       <nav className="navigation">
-        <ul className="list-non-bullets aside-list">
+        <ul className="list-non-bullets aside-list gap-2">
           <li className="nav-list pd-y-base">
             <Link className="link" to="/">
               {" "}
