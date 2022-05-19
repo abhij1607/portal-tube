@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/watch/:watchid" element={<SingleVideoPage />} />
-          <Route path="results" element={<SearchResult />} />
+          <Route path="/results" element={<SearchResult />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route element={<RequiresAuth />}>
