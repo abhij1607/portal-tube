@@ -7,4 +7,5 @@ export { WatchLater } from "./WatchLater/WatchLater";
 export { SingleVideoPage } from "./SingleVideoPage/SingleVideoPage";
 export { History } from "./History/History";
 export { Liked } from "./Liked/Liked";
+export { PageNotFound } from "./404/404";
 export { SearchResult } from "./SearchResult/SearchResult";
