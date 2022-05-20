@@ -1,9 +1,11 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
+import { SearchBox } from "./SearchBox/SearchBox";
 
 const Navbar = () => {
   const { userState, userDispatch } = useAuth();
+
   return (
     <header className="top-nav">
       <nav className="brand-nav navigation gap-1 box-shadow">
@@ -28,17 +30,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="flex-row wd-full search-div">
-          <input
-            type="search"
-            className="input input-search input-primary"
-            id="search"
-            name="search"
-          />
-          <button className="btn btn-search" type="search">
-            <i className="fas fa-2x fa-search" title="search" />
-          </button>
-        </div>
+        <SearchBox />
 
         {userState.userToken ? (
           <button
