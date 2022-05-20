@@ -85,7 +85,7 @@ const WatchVideoCard = ({ video }) => {
               onClick={handleDeleteVideoInLikes}
             >
               <AiFillLike />
-              Like
+              <span className="desktop-element">Like</span>
             </button>
           ) : (
             <button
@@ -93,7 +93,7 @@ const WatchVideoCard = ({ video }) => {
               onClick={handleAddToLikes}
             >
               <AiOutlineLike />
-              Like
+              <span className="desktop-element">Like</span>
             </button>
           )}
 
@@ -102,14 +102,16 @@ const WatchVideoCard = ({ video }) => {
               className="action-icon btn txt-md flex-row item-center"
               onClick={handleDeleteVideoInWatchLater}
             >
-              <MdWatchLater /> Watch Later
+              <MdWatchLater />{" "}
+              <span className="desktop-element">Watch Later</span>
             </button>
           ) : (
             <button
               className="action-icon btn txt-md flex-row item-center"
               onClick={handleAddToWatchLater}
             >
-              <MdOutlineWatchLater /> Watch Later
+              <MdOutlineWatchLater />{" "}
+              <span className="desktop-element">Watch Later</span>
             </button>
           )}
 
@@ -117,7 +119,8 @@ const WatchVideoCard = ({ video }) => {
             className="action-icon btn txt-md flex-row item-center"
             onClick={handleAddToPlaylist}
           >
-            <RiPlayListAddFill /> Add To Playlist
+            <RiPlayListAddFill />{" "}
+            <span className="desktop-element">Add To Playlist</span>
           </button>
         </div>
       </div>
