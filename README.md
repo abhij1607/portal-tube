@@ -36,7 +36,7 @@ $ npm start
 - <strong>Watch Later Page</strong>  - User can view videos marked to watch later and also delete them.
 * <strong>History Page</strong>  - User can view previously watched videos and also clear entire history.
 - <strong>Liked Videos Page</strong>  - User can view and delete their liked videos.
-* Upcoming Features
+### Upcoming Features
 - <strong> Add Notes in Videos </strong>
 - <strong> Sort Videos by time of upload </strong>
 - <strong> Dark Theme Mode </strong>
