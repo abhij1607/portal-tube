@@ -1,4 +1,7 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+
+const notify = (msg) => toast(msg);
 
 const fetchVideos = async (dispatch) => {
   try {
@@ -55,7 +58,9 @@ const requestAddPlaylist = async (requestBody, headers, dispatch) => {
       headers
     );
     dispatch({ type: "UPDATE_PLAYLIST", payload: response.data.playlists });
+    notify("Playlist Created");
   } catch (error) {
+    notify("Some Error Occured");
     console.log(error);
   }
 };
@@ -67,8 +72,10 @@ const requestDeletePlaylist = async (playlistId, headers, dispatch) => {
       headers
     );
     dispatch({ type: "UPDATE_PLAYLIST", payload: response.data.playlists });
+    notify("Playlist Deleted");
   } catch (error) {
     console.log(error);
+    notify("Some Error Occured");
   }
 };
 
@@ -99,7 +106,9 @@ const requestAddVideoInPlaylist = async (
       type: "UPDATE_SINGLE_PLAYLIST",
       payload: response.data.playlist,
     });
+    notify("Added Video in Playlist");
   } catch (error) {
+    notify("Some Error occured");
     console.log(error);
   }
 };
@@ -119,6 +128,7 @@ const requestDeleteVideoInPlaylist = async (
       type: "UPDATE_SINGLE_PLAYLIST",
       payload: response.data.playlist,
     });
+    notify("Deleted Video from Playlist");
   } catch (error) {
     console.log(error);
   }
@@ -147,7 +157,9 @@ const requestAddVideoInWatchLater = async (requestBody, headers, dispatch) => {
       type: "UPDATE_WATCHLATER",
       payload: response.data.watchlater,
     });
+    notify("Added in watchlater");
   } catch (error) {
+    notify("Some Error Occured");
     console.log(error);
   }
 };
@@ -162,7 +174,9 @@ const requestDeleteVideoInWatchLater = async (videoId, headers, dispatch) => {
       type: "UPDATE_WATCHLATER",
       payload: response.data.watchlater,
     });
+    notify("Removed from watchlater");
   } catch (error) {
+    notify("Some Error Occured");
     console.log(error);
   }
 };
@@ -193,7 +207,7 @@ const fetchHistory = async (headers, dispatch) => {
     dispatch({
       type: "UPDATE_HISTORY",
       payload: response.data.history,
-      });
+    });
   } catch (error) {
     console.log(error);
   }
@@ -221,7 +235,7 @@ const requestAddVideoInHistory = async (requestBody, headers, dispatch) => {
     dispatch({
       type: "UPDATE_HISTORY",
       payload: response.data.history,
-       });
+    });
   } catch (error) {
     console.log(error);
   }
@@ -238,7 +252,9 @@ const requestAddVideoInLikes = async (requestBody, headers, dispatch) => {
       type: "UPDATE_LIKES",
       payload: response.data.likes,
     });
+    notify("Added in Likes");
   } catch (error) {
+    notify("Some Error Occured");
     console.log(error);
   }
 };
@@ -264,7 +280,7 @@ const requestDeleteAllHistory = async (headers, dispatch) => {
     dispatch({
       type: "UPDATE_HISTORY",
       payload: response.data.history,
-      });
+    });
   } catch (error) {
     console.log(error);
   }
@@ -277,7 +293,9 @@ const requestDeleteVideoInLikes = async (videoId, headers, dispatch) => {
       type: "UPDATE_LIKES",
       payload: response.data.likes,
     });
+    notify("Removed from Likes");
   } catch (error) {
+    notify("Some Error Occured");
     console.log(error);
   }
 };
