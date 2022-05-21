@@ -142,7 +142,6 @@ const fetchWatchLater = async (headers, dispatch) => {
       payload: response.data.watchlater,
     });
   } catch (error) {
-    notify("Some Error Occured");
     console.log(error);
   }
 };
