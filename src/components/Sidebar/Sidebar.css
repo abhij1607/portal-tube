@@ -20,9 +20,10 @@
   }
   .aside-list {
     display: flex;
-    justify-content: space-around;
+    padding: 0 var(--size-12);
   }
-  .aside-list {
-    padding: 0;
+  .sidebar-container {
+    width: 100vw;
+    overflow: auto;
   }
 }

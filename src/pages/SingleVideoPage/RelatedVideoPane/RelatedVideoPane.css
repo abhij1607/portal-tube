@@ -5,3 +5,8 @@
   margin: 0;
   line-height: 1;
 }
+@media (max-width: 1023px) {
+  .related-video-bar {
+    margin: 0 auto;
+  }
+}
