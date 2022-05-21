@@ -108,7 +108,7 @@ const requestAddVideoInPlaylist = async (
     });
     notify("Added Video in Playlist");
   } catch (error) {
-    notify("Added Video in Playlist");
+    notify("Some Error occured");
     console.log(error);
   }
 };
