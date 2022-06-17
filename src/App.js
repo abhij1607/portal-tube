@@ -1,8 +1,7 @@
 import "./styles/index.css";
 import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "./components/AppLayout/AppLayout";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "react-hot-toast";
 import {
   Home,
   Login,
@@ -38,7 +37,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      <ToastContainer />
+      <Toaster position="top-right" reverseOrder={true} />
     </>
   );
 }

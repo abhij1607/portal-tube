@@ -79,7 +79,7 @@ const WatchVideoCard = ({ video }) => {
           {getNumberInFormat(video.views)} views
         </span>
         <div className="align-right flex-row gap-2">
-          {likes.some((item) => item._id === video._id) ? (
+          {likes?.some((item) => item._id === video._id) ? (
             <button
               className="action-icon btn txt-md flex-row item-center"
               onClick={handleDeleteVideoInLikes}
@@ -97,7 +97,7 @@ const WatchVideoCard = ({ video }) => {
             </button>
           )}
 
-          {watchlater.some((item) => item._id === video._id) ? (
+          {watchlater?.some((item) => item._id === video._id) ? (
             <button
               className="action-icon btn txt-md flex-row item-center"
               onClick={handleDeleteVideoInWatchLater}
