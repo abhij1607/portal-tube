@@ -10,7 +10,7 @@ const SearchResult = () => {
   const query = new URLSearchParams(useLocation().search);
   const searchKeyword = query.get("search_query");
 
-  const searchFilteredVideos = videos.filter((video) =>
+  const searchFilteredVideos = videos?.filter((video) =>
     video.title.toLowerCase().includes(searchKeyword.toLowerCase())
   );
 
@@ -18,7 +18,7 @@ const SearchResult = () => {
     <main>
       <h1 className="pd-x-base">Search Result</h1>
       <div className="cards-layout">
-        {searchFilteredVideos.map((video) => (
+        {searchFilteredVideos?.map((video) => (
           <VideoCard video={video} key={video._id} />
         ))}
       </div>

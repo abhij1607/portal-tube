@@ -68,9 +68,9 @@ const VideoCard = ({ video }) => {
         />
         <div className="card-info flex-row gap-1">
           <div>
-            <h3 className="card-title">{video.title}</h3>
-            <p className="card-author">{video.channelName}</p>
-            <div className="card-author flex-row gap-1">
+            <h3 className="card-title txt-base">{video.title}</h3>
+            <p className="card-author txt-base">{video.channelName}</p>
+            <div className="card-author flex-row gap-1 txt-base">
               <span>{getNumberInFormat(video.views)} views</span>
               <span>{getNumberInFormat(video.likes)} likes</span>
             </div>

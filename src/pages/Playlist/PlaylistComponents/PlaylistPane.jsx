@@ -10,7 +10,7 @@ const PlaylistPane = () => {
 
   return (
     <div className="cards-layout">
-      {playlists.map((playlist) => (
+      {playlists?.map((playlist) => (
         <PlaylistCard playlist={playlist} key={playlist.id} />
       ))}
     </div>

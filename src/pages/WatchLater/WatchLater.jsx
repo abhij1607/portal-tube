@@ -11,7 +11,7 @@ const WatchLater = () => {
     <main>
       <h1>Watch Later Videos</h1>
       <div className="single-playlist-layout">
-        {watchlater.map((video) => (
+        {watchlater?.map((video) => (
           <WatchLaterVideoCard key={video._id} video={video} />
         ))}
       </div>

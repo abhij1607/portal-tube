@@ -10,7 +10,7 @@ const Playlist = () => {
   return (
     <main>
       <h1>Playlist</h1>
-      {playlists.length > 0 ? <PlaylistPane /> : <h2>No items in playlist</h2>}
+      {playlists?.length > 0 ? <PlaylistPane /> : <h2>No items in playlist</h2>}
     </main>
   );
 };

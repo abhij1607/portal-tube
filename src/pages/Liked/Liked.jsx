@@ -10,9 +10,9 @@ const Liked = () => {
   return (
     <main>
       <h1>Liked Videos</h1>
-      {likes.length > 0 ? (
+      {likes?.length > 0 ? (
         <div className="single-playlist-layout">
-          {likes.map((video) => (
+          {likes?.map((video) => (
             <LikedVideoCard key={video._id} video={video} />
           ))}
         </div>

@@ -34,13 +34,16 @@ const Navbar = () => {
 
         {userState.userToken ? (
           <button
-            className="btn btn-primary-outline desktop-element"
+            className="btn btn-primary-outline desktop-element txt-md"
             onClick={() => userDispatch({ type: "LOG_OUT" })}
           >
             Logout
           </button>
         ) : (
-          <Link className="btn btn-primary-outline desktop-element" to="/login">
+          <Link
+            className="btn btn-primary-outline desktop-element txt-md"
+            to="/login"
+          >
             Login
           </Link>
         )}

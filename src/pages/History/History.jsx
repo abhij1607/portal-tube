@@ -29,7 +29,7 @@ const History = () => {
       </div>
 
       <div className="single-playlist-layout">
-        {history.map((video) => (
+        {history?.map((video) => (
           <HistoryVideoCard key={video._id} video={video} />
         ))}
       </div>

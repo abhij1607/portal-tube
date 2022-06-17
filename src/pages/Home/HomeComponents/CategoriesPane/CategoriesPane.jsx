@@ -12,7 +12,7 @@ const CategoriesPane = () => {
       <li>
         <button
           className={`btn ${
-            selectedCategory === "All" ? "btn-primary" : "btn-secondary"
+            selectedCategory === "All" ? "primary-link" : "secondary-link"
           }`}
           onClick={() =>
             dataDispatch({
@@ -30,8 +30,8 @@ const CategoriesPane = () => {
             <button
               className={`btn wd-max ${
                 selectedCategory === category.categoryName
-                  ? "btn-primary"
-                  : "btn-secondary"
+                  ? "primary-link"
+                  : "secondary-link"
               }`}
               onClick={() =>
                 dataDispatch({
